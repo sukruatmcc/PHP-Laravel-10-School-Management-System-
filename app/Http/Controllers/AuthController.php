@@ -10,7 +10,15 @@ class AuthController extends Controller
     public function login()
     {
         if (!empty(Auth::check())) {
-            return redirect('admin/dashboard');
+            if (Auth::user()->user_type == 1) {
+                return redirect('admin/dashboard');
+            } elseif (Auth::user()->user_type == 2) {
+                return redirect('teacher/dashboard');
+            } elseif (Auth::user()->user_type == 3) {
+                return redirect('student/dashboard');
+            } elseif (Auth::user()->user_type == 4) {
+                return redirect('parent/dashboard');
+            }
         }
 
         return view('admin.auth.login');
@@ -20,7 +28,15 @@ class AuthController extends Controller
     {
         $remember = !empty($request->remember) ? true : false;
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
-            return redirect('admin/dashboard');
+            if (Auth::user()->user_type == 1) {
+                return redirect('admin/dashboard');
+            } elseif (Auth::user()->user_type == 2) {
+                return redirect('teacher/dashboard');
+            } elseif (Auth::user()->user_type == 3) {
+                return redirect('student/dashboard');
+            } elseif (Auth::user()->user_type == 4) {
+                return redirect('parent/dashboard');
+            }
         } else {
             return redirect()->back()->with('error', 'Please enter currect email and password');
         }
