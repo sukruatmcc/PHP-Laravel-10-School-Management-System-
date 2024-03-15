@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [AuthController::class,'login'])->name('login');
-Route::post('/auth/login', [AuthController::class,'auhtLogin'])->name('auth.login');
-Route::get('logout',[AuthController::class,'logout']);
+Route::get('/', [AuthController::class, 'login'])->name('login');
+Route::post('/auth/login', [AuthController::class, 'auhtLogin'])->name('auth.login');
+Route::get('logout', [AuthController::class, 'logout']);
 
 
 
@@ -31,35 +32,22 @@ Route::get('/admin/admin/list', function () {
     return view('admin.admin.list');
 });
 
-Route::group(['prefix' => 'admin','middleware' => 'admin'],function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    });
-
+    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 });
 
-Route::group(['prefix' => 'teacher','middleware' => 'teacher'],function(){
+Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
 
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    });
-
+    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 });
 
-Route::group(['prefix' => 'student','middleware' => 'student'],function(){
+Route::group(['prefix' => 'student', 'middleware' => 'student'], function () {
 
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    });
-
+    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 });
 
-Route::group(['prefix' => 'parent','middleware' => 'parent'],function(){
+Route::group(['prefix' => 'parent', 'middleware' => 'parent'], function () {
 
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    });
-
+    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 });
-
