@@ -22,6 +22,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::post('/auth/login', [AuthController::class, 'auhtLogin'])->name('auth.login');
 Route::get('logout', [AuthController::class, 'logout']);
+Route::get('forgot-password',[AuthController::class,'forgotpassword']);
+Route::post('forgot-password',[AuthController::class,'forgotPasswordSend']);
+Route::get('reset/{token}',[AuthController::class,'reset']);
+Route::post('reset/{token}',[AuthController::class,'resetSend']);
+
 
 
 
