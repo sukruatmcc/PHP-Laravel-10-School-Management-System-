@@ -72,7 +72,7 @@ class AuthController extends Controller
     {
         $user = User::getTokenSingle($remember_token);
          if(!empty($user))
-         {
+          {
             $data['user'] = $user;
            return view('admin.auth.reset',$data);
          }

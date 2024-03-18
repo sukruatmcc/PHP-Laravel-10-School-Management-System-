@@ -116,7 +116,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('admin/admin/list') }}" class="nav-link @if(Request::segment(2) == 'admin') active @endif">
+                    <a href="{{ route('admin.index') }}" class="nav-link {{ Request::routeIs('admin.index') ? 'active' : '' }}">
                         <i class="nav-icon far fa-user"></i>
                         <p>
                             Admin

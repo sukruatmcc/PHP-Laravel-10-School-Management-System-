@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -33,13 +34,19 @@ Route::post('reset/{token}',[AuthController::class,'resetSend']);
 
 
 
-Route::get('/admin/admin/list', function () {
-    return view('admin.admin.list');
-});
+// Route::get('/admin/admin/list', function () {
+//     return view('admin.admin.list');
+// });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
-    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('/list',[AdminController::class,'index'])->name('admin.index');
+    Route::get('/add',[AdminController::class,'create'])->name('admin.create');
+    Route::post('/add',[AdminController::class,'store'])->name('admin.store');
+    Route::get('/edit/{id}',[AdminController::class,'edit'])->name('admin.edit');
+    Route::post('/edit/{id}',[AdminController::class,'update'])->name('admin.update');
+    Route::get('/delete/{id}',[AdminController::class,'destroy'])->name('admin.destroy');
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
 });
 
 Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {

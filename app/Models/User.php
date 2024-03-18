@@ -43,15 +43,27 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    static public function getAdmin()
+    {
+        return self::select('users.*')
+            ->where('user_type', '=', 1)
+            ->where('is_delete','=',0)
+            ->orderBy('id', 'desc')
+            ->get();
+    }
+
+    static public function getSingle($id)
+    {
+        return self::find($id);
+    }
+
     static public function getEmailSingle($email)
     {
-        return User::where('email', '=' ,$email)->first();
+        return User::where('email', '=', $email)->first();
     }
 
     static public function getTokenSingle($remember_token)
     {
-        return User::where('remember_token', '=' ,$remember_token)->first();
+        return User::where('remember_token', '=', $remember_token)->first();
     }
-
-
 }
