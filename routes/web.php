@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClassController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::post('/edit/{id}',[AdminController::class,'update'])->name('admin.update');
     Route::get('/delete/{id}',[AdminController::class,'destroy'])->name('admin.destroy');
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
+
+    //class
+    Route::get('/class/list',[ClassController::class,'index'])->name('admin.class.index');
+    Route::get('/class/add',[ClassController::class,'create'])->name('admin.class.create');
+    Route::post('/class/add',[ClassController::class,'store'])->name('admin.class.store');
+    Route::get('/class/edit/{id}',[ClassController::class,'edit'])->name('admin.class.edit');
+    Route::post('/class/edit/{id}',[ClassController::class,'update'])->name('admin.class.update');
+    Route::get('/class/delete/{id}',[ClassController::class,'destroy'])->name('admin.class.destroy');
+
 });
 
 Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
