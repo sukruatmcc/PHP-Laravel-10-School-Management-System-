@@ -2,43 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clas;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 
-class ClassController extends Controller
+class SubjectController extends Controller
 {
     public function index()
     {
-        $data['header_title'] = 'Class List';
-        $data['getRecord'] = Clas::getRecord();
-        return view('admin.class.list', $data);
+        $data['header_title'] = 'Subject List';
+        $data['getRecord'] = Subject::getRecord();
+        return view('admin.subject.list', $data);
     }
 
     public function create()
     {
         $data['header_title'] = "Add New Class";
-        return view('admin.class.create',$data);
+        return view('admin.subject.create',$data);
     }
 
     public function store(Request $request)
     {
-        $class = new Clas;
+        $class = new Subject;
         $class->name = trim($request->name);
         $class->status = trim($request->status);
+        $class->type = trim($request->type);
         $class->created_by = auth()->user()->id;
         $class->save();
 
-        return redirect()->route('admin.class.index')->with('success','Class successfully created');
+        return redirect()->route('admin.subject.index')->with('success','Subject successfully created');
     }
 
     public function edit($id)
     {
         $data['header_title'] = "Add New Admin";
-        $data['getRecord'] = Clas::getSingle($id);
+        $data['getRecord'] = Subject::getSingle($id);
 
         if(!empty($data['getRecord']))
         {
-            return view('admin.class.edit',$data);
+            return view('admin.subject.edit',$data);
         }
         else
         {
@@ -48,20 +49,21 @@ class ClassController extends Controller
 
     public function update($id, Request $request)
     {
-        $class = Clas::getSingle($id);
+        $class = Subject::getSingle($id);
         $class->name = trim($request->name);
         $class->status = trim($request->status);
+        $class->type = trim($request->type);
         $class->save();
 
-        return redirect()->route('admin.class.index')->with('success','Class successfully updated');
+        return redirect()->route('admin.subject.index')->with('success','Subject successfully updated');
     }
 
     public function destroy($id)
     {
-        $class = Clas::getSingle($id);
+        $class = Subject::getSingle($id);
         $class->is_delete = 1;
         $class->save();
 
-        return redirect()->back()->with('success','Class successfully deleted');
+        return redirect()->back()->with('success','Subject successfully deleted');
     }
 }
