@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\ClassSubjectController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
@@ -65,6 +66,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/subject/edit/{id}',[SubjectController::class,'edit'])->name('admin.subject.edit');
     Route::post('/subject/edit/{id}',[SubjectController::class,'update'])->name('admin.subject.update');
     Route::get('/subject/delete/{id}',[SubjectController::class,'destroy'])->name('admin.subject.destroy');
+
+    //assign_subject
+    Route::get('/assign-subject/list',[ClassSubjectController::class,'index'])->name('admin.assign_subject.index');
+    Route::get('/assign-subject/add',[ClassSubjectController::class,'create'])->name('admin.assign_subject.create');
+    Route::post('/assign-subject/add',[ClassSubjectController::class,'store'])->name('admin.assign_subject.store');
+    Route::get('/assign-subject/edit/{id}',[ClassSubjectController::class,'edit'])->name('admin.assign_subject.edit');
+    Route::post('/assign-subject/edit/{id}',[ClassSubjectController::class,'update'])->name('admin.assign_subject.update');
+    Route::get('/assign-subject/delete/{id}',[ClassSubjectController::class,'destroy'])->name('admin.assign_subject.destroy');
 
 });
 

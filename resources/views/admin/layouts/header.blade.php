@@ -139,6 +139,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.assign_subject.index') }}" class="nav-link {{ Request::routeIs('admin.assign_subject.index') ? 'active' : '' }}">
+                        <i class="nav-icon far fa-user"></i>
+                        <p>
+                            Assign Subject
+                        </p>
+                    </a>
+                </li>
                 @elseif(Auth::user()->user_type == 2)
                 <li class="nav-item">
                     <a href="{{ url('teacher/dashboard') }}" class="nav-link @if(Request::segment(2) == 'dashboard') active @endif">

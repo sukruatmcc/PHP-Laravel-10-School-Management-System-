@@ -32,7 +32,7 @@ class Subject extends Model
         return $return;
     }
 
-    static public function getSingle($id)
+    static public function getSingle($id) 
     {
         return self::find($id);
     }
