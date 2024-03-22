@@ -74,6 +74,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/assign-subject/edit/{id}',[ClassSubjectController::class,'edit'])->name('admin.assign_subject.edit');
     Route::post('/assign-subject/edit/{id}',[ClassSubjectController::class,'update'])->name('admin.assign_subject.update');
     Route::get('/assign-subject/delete/{id}',[ClassSubjectController::class,'destroy'])->name('admin.assign_subject.destroy');
+    Route::get('/assign-subject/edit_single/{id}',[ClassSubjectController::class,'edit_single'])->name('admin.assign_subject.edit_single');
+    Route::post('/assign-subject/edit_single/{id}',[ClassSubjectController::class,'update_single'])->name('admin.assign_subject.update_single');
 
 });
 

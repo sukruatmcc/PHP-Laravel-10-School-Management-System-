@@ -77,6 +77,8 @@
                                                 <td>
                                                     <a href="{{ route('admin.assign_subject.edit', $row->id) }}"
                                                         class="btn btn-primary">Edit</a>
+                                                        <a href="{{ route('admin.assign_subject.edit_single', $row->id) }}"
+                                                            class="btn btn-primary">Edit Single</a>
                                                     <a href="{{ route('admin.assign_subject.destroy', $row->id) }}"
                                                         class="btn btn-danger">Delete</a>
                                                 </td>
