@@ -27,6 +27,18 @@ class StudentController extends Controller
 
     public function store(Request $request)
     {
+            request()->validate(([
+                'email' => 'required|email|unique:users',
+                'class_id' => 'required',
+                'weight' => 'max:10',
+                'blood_group' => 'max:10',
+                'mobile_number' => 'max:15,min:8',
+                'admissions_number' => 'max:50',
+                'roll_number' => 'max:50',
+                'caste' => 'max:50',
+                'height' => 'max:10'
+            ]));
+
             $student = new User;
             $student->name = trim($request->name);
             $student->user_type = 3;
