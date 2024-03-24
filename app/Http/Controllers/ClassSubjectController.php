@@ -112,7 +112,7 @@ class ClassSubjectController extends Controller
     }
 
     public function update_single($id, Request $request)
-    {
+    { 
             $class_subject = ClassSubject::getSingle($id);
             $class_subject->class_id = $request->class_id;
             $class_subject->subject_id = $request->subject_id;
