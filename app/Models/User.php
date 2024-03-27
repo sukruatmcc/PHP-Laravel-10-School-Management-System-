@@ -71,7 +71,8 @@ class User extends Authenticatable
 
     static public function getStudent()
     {
-        $return =  self::select('users.*','clas.name as class_name')
+        $return =  self::select('users.*','clas.name as class_name','parent.name as parent_name','parent.last_name as parent_last_name')
+                ->join('users as parent','parent.id' ,'=', 'users.parent_id','left')
                 ->join('clas','clas.id' ,'=', 'users.class_id','left')
                 ->where('users.user_type', '=', 3)
                 ->where('users.is_delete','=',0);
@@ -134,6 +135,54 @@ class User extends Authenticatable
         $return =  $return->orderBy('users.id', 'desc')
                 ->paginate(20);
         return $return;
+    }
+
+    static public function getMyStudent($parentID)
+    {
+        $return =  self::select('users.*','clas.name as class_name','parent.name as parent_name','parent.last_name as parent_last_name')
+        ->join('users as parent','parent.id' ,'=', 'users.parent_id','left')
+        ->join('clas','clas.id' ,'=', 'users.class_id','left')
+        ->where('users.user_type', '=', 3)
+        ->where('users.parent_id','=',$parentID)
+        ->where('users.is_delete','=',0)
+        ->orderBy('users.id', 'desc')
+        ->paginate(20);
+return $return;
+    }
+
+    static public function getSearchStudent()
+    {
+        if(!empty(request()->get('id')) || !empty(request()->get('name')) || !empty(request()->get('last_name')) || !empty(request()->get('email')))
+        {
+            $return =  self::select('users.*','clas.name as class_name','parent.name as parent_name')
+            ->join('users as parent','parent.id' ,'=', 'users.parent_id','left')
+            ->join('clas','clas.id' ,'=', 'users.class_id','left')
+            ->where('users.user_type', '=', 3)
+            ->where('users.is_delete','=',0);
+            if(!empty(request()->get('id')))
+            {
+                $return = $return->where('users.id','like','%'.request()->get('id').'%');
+            }
+
+            if(!empty(request()->get('name')))
+            {
+                $return = $return->where('users.name','like','%'.request()->get('name').'%');
+            }
+
+            if(!empty(request()->get('last_name')))
+            {
+                $return = $return->where('users.last_name','like','%'.request()->get('last_name').'%');
+            }
+
+            if(!empty(request()->get('email')))
+            {
+                $return = $return->where('users.email','like','%'.request()->get('email').'%');
+            }
+
+    $return =  $return->orderBy('users.id', 'desc')
+            ->paginate(20);
+    return $return;
+        }
     }
 
     static public function getParent()

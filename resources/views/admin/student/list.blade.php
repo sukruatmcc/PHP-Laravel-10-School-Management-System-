@@ -109,7 +109,8 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Profile Pic.</th>
-                                            <th>Name</th>
+                                            <th>Student Name</th>
+                                            <th>Parent Name</th>
                                             <th>Email</th>
                                             <th>Admission Number</th>
                                             <th>Class</th>
@@ -139,6 +140,7 @@
                                                             @endif
                                                         </td>
                                                         <td>{{ $row->name }} {{ $row->last_name }}</td>
+                                                        <td>{{ $row->parent_name }} {{ $row->parent_last_name }}</td>
                                                         <td>{{ $row->email }}</td>
                                                         <td>{{ $row->admission_number }}</td>
                                                         <td>{{ $row->class_name }}</td>

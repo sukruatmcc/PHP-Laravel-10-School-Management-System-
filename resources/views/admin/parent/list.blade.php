@@ -123,6 +123,8 @@
                                                         <td>
                                                             <a href="{{ route('admin.parent.edit', $row->id) }}"
                                                                 class="btn btn-primary btn-sm">Edit</a>
+                                                                <a href="{{ route('admin.parent.my_student', $row->id) }}"
+                                                                    class="btn btn-primary btn-sm">My Student</a>
                                                             <a href="{{ route('admin.parent.destroy', $row->id) }}"
                                                                 class="btn btn-danger btn-sm">Delete</a>
                                                         </td>
