@@ -23,6 +23,7 @@
                                         <h3 class="card-title">Search Parent</h3>
                                     </div>
                                     <form method="GET" action="">
+                                        @csrf
                                         <div class="card-body">
                                             <div class="row">
                                             <div class="form-group col-md-3">
@@ -39,8 +40,8 @@
                                             </div>
                                             <div class="form-group col-md-3">
                                                 <label for="exampleInputEmail1">Gender</label>
-                                                <select class="form-control" name="gender" required>
-                                                    <option selected>Select Gender</option>
+                                                <select class="form-control" name="gender">
+                                                    <option value="">Select Gender</option>
                                                     <option {{ (request()->get('gender') == 'Male') ? 'selected' : '' }} value="Male">Male</option>
                                                     <option {{ (request()->get('gender') == 'Female') ? 'selected' : '' }}  value="Female">Female</option>
                                                     <option {{ (request()->get('gender') == 'Other') ? 'selected' : '' }}  value="Other">Other</option>

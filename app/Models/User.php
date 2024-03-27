@@ -168,7 +168,7 @@ class User extends Authenticatable
 
         if(!empty(request()->get('mobile_number')))
         {
-            $return = $return->where('users.roll_number','like','%'.request()->get('mobile_number').'%');
+            $return = $return->where('users.mobile_number','like','%'.request()->get('mobile_number').'%');
         }
 
         if(!empty(request()->get('gender')))
