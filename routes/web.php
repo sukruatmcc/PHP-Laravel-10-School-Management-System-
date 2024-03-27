@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ClassSubjectController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ParentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
@@ -60,6 +61,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/student/edit/{id}',[StudentController::class,'edit'])->name('admin.student.edit');
     Route::post('/student/edit/{id}',[StudentController::class,'update'])->name('admin.student.update');
     Route::get('/student/delete/{id}',[StudentController::class,'destroy'])->name('admin.student.destroy');
+
+    //parent
+    Route::get('/parent/list',[ParentController::class,'index'])->name('admin.parent.index');
+    Route::get('/parent/add',[ParentController::class,'create'])->name('admin.parent.create');
+    Route::post('/parent/add',[ParentController::class,'store'])->name('admin.parent.store');
+    Route::get('/parent/edit/{id}',[ParentController::class,'edit'])->name('admin.parent.edit');
+    Route::post('/parent/edit/{id}',[ParentController::class,'update'])->name('admin.parent.update');
+    Route::get('/parent/delete/{id}',[ParentController::class,'destroy'])->name('admin.parent.destroy');
 
     //class
     Route::get('/class/list',[ClassController::class,'index'])->name('admin.class.index');

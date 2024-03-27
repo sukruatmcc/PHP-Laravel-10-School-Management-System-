@@ -136,6 +136,56 @@ class User extends Authenticatable
         return $return;
     }
 
+    static public function getParent()
+    {
+        $return =  self::select('users.*')
+        ->where('users.user_type', '=', 4)
+        ->where('users.is_delete','=',0);
+        if(!empty(request()->get('name')))
+        {
+            $return = $return->where('users.name','like','%'.request()->get('name').'%');
+        }
+
+        if(!empty(request()->get('last_name')))
+        {
+            $return = $return->where('users.last_name','like','%'.request()->get('last_name').'%');
+        }
+
+        if(!empty(request()->get('email')))
+        {
+            $return = $return->where('users.email','like','%'.request()->get('email').'%');
+        }
+
+        if(!empty(request()->get('occupation')))
+        {
+            $return = $return->where('users.occupation','like','%'.request()->get('occupation').'%');
+        }
+
+        if(!empty(request()->get('address')))
+        {
+            $return = $return->where('users.address','like','%'.request()->get('address').'%');
+        }
+
+        if(!empty(request()->get('mobile_number')))
+        {
+            $return = $return->where('users.roll_number','like','%'.request()->get('mobile_number').'%');
+        }
+
+        if(!empty(request()->get('gender')))
+        {
+            $return = $return->where('users.gender','like','%'.request()->get('gender').'%');
+        }
+
+        if(!empty(request()->get('date')))
+        {
+            $return = $return->whereDate('users.created_at','=',request()->get('date'));
+        }
+
+        $return =  $return->orderBy('users.id', 'desc')
+                ->paginate(20);
+        return $return;
+    }
+
     static public function getSingle($id)
     {
         return self::find($id);

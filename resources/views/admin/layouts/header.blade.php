@@ -132,6 +132,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.parent.index') }}" class="nav-link {{ Request::routeIs('admin.parent.index') ? 'active' : '' }}">
+                        <i class="nav-icon far fa-user"></i>
+                        <p>
+                            Parent
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('admin.class.index') }}" class="nav-link {{ Request::routeIs('admin.class.index') ? 'active' : '' }}">
                         <i class="nav-icon far fa-user"></i>
                         <p>
