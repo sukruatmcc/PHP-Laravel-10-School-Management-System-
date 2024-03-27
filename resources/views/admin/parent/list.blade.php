@@ -60,6 +60,14 @@
                                                 <input type="text" class="form-control" value="{{ request()->get('mobile_number') }}" name="mobile_number" placeholder="Mobile Number">
                                             </div>
                                             <div class="form-group col-md-3">
+                                                <label for="exampleInputEmail1">Status</label>
+                                                <select class="form-control" name="status" >
+                                                    <option value="">Select Status</option>
+                                                    <option {{ (request()->get('status') == 100) ? 'selected' : '' }} value="100">Active</option>
+                                                    <option {{ (request()->get('status') == 1) ? 'selected' : '' }}  value="1">Inactive</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-3">
                                                 <label for="exampleInputEmail1">Created Date</label>
                                                 <input type="date" class="form-control" value="{{ request()->get('date') }}" name="date">
                                             </div>

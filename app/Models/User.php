@@ -176,6 +176,12 @@ class User extends Authenticatable
             $return = $return->where('users.gender','like','%'.request()->get('gender').'%');
         }
 
+        if(!empty(request()->get('status')))
+        {
+            $status = (request()->get('status')) == 100 ? 0 : 1;
+            $return = $return->where('users.status','=',$status);
+        }
+
         if(!empty(request()->get('date')))
         {
             $return = $return->whereDate('users.created_at','=',request()->get('date'));
