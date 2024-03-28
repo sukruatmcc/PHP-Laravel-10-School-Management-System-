@@ -197,7 +197,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('teacher.change_password') }}" class="nav-link {{ Request::routeIs('teacher.assign_subject.index') ? 'active' : '' }}">
+                    <a href="{{ url('teacher/change-password') }}" class="nav-link {{ Request::routeIs('teacher.change_password.index') ? 'active' : '' }}">
                         <i class="nav-icon far fa-user"></i>
                         <p>
                             Change Password
@@ -214,7 +214,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('change_password') }}" class="nav-link {{ Request::routeIs('admin.assign_subject.index') ? 'active' : '' }}">
+                    <a href="{{ route('student.my_account') }}" class="nav-link {{ Request::routeIs('student.my_account') ? 'active' : '' }}">
+                        <i class="nav-icon far fa-user"></i>
+                        <p>
+                            My Account
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('student/change-password') }}" class="nav-link {{ Request::routeIs('student.change_password') ? 'active' : '' }}">
                         <i class="nav-icon far fa-user"></i>
                         <p>
                             Change Password
@@ -227,6 +235,14 @@
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('parent.my_account') }}" class="nav-link {{ Request::routeIs('parent.my_account') ? 'active' : '' }}">
+                        <i class="nav-icon far fa-user"></i>
+                        <p>
+                            My Account
                         </p>
                     </a>
                 </li>

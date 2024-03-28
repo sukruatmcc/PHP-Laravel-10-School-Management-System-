@@ -17,7 +17,8 @@
                     <div class="col-md-12">
                         @include('admin.layouts.message')
                         <div class="card card-primary">
-                            <form method="POST" action="{{ route('change_password.update') }}">
+                            <form method="POST" @if(auth()->user()->user_type == 1) action="{{ route('change_password.update') }}" @elseif(auth()->user()->user_type == 2) action="{{ route('teacher.change_password.update') }}"
+                                @elseif(auth()->user()->user_type == 3) action="{{ route('student.change_password.update') }}" @elseif(auth()->user()->user_type == 4) action="{{ route('parent.change_password.update') }}" @endif>
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
