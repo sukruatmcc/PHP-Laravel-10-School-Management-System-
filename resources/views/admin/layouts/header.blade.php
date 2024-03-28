@@ -189,7 +189,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('change_password') }}" class="nav-link {{ Request::routeIs('admin.assign_subject.index') ? 'active' : '' }}">
+                    <a href="{{ url('teacher/my-account') }}" class="nav-link {{ Request::routeIs('teacher.my_account') ? 'active' : '' }}">
+                        <i class="nav-icon far fa-user"></i>
+                        <p>
+                            My Account
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('teacher.change_password') }}" class="nav-link {{ Request::routeIs('teacher.assign_subject.index') ? 'active' : '' }}">
                         <i class="nav-icon far fa-user"></i>
                         <p>
                             Change Password

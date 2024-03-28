@@ -102,7 +102,7 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="exampleInputPassword1">Password</label>
-                                            <input type="test" class="form-control" name="password" placeholder="Password">
+                                            <input type="text" class="form-control" name="password" placeholder="Password">
                                             <p>Due you want to change password so Please add new password</p>
                                         </div>
                                     </div>

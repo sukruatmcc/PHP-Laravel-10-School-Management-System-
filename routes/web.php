@@ -118,6 +118,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
 
     Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('/my-account', [UserController::class, 'myAccount'])->name('teacher.my_account');
+    Route::post('/my-account', [UserController::class, 'updateAccountMy'])->name('teacher.my_account.update');
 
     //change_password
     Route::get('/change-password',[UserController::class,'changePassword'])->name('teacher.change_password');
