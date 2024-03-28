@@ -172,6 +172,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.my_account') }}" class="nav-link {{ Request::routeIs('admin.my_account') ? 'active' : '' }}">
+                        <i class="nav-icon far fa-user"></i>
+                        <p>
+                            My Account
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('change_password') }}" class="nav-link {{ Request::routeIs('change_password') ? 'active' : '' }}">
                         <i class="nav-icon far fa-user"></i>
                         <p>

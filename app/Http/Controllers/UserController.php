@@ -28,7 +28,30 @@ class UserController extends Controller
         {
             return view('parent.my-account',$data);
         }
+        elseif(auth()->user()->user_type == 1)
+        {
+            return view('admin.my-account',$data);
+        }
 
+    }
+
+    public function adminUpdateAccountMy(Request $request)
+    {
+        $id = auth()->user()->id;
+
+        request()->validate([
+            'email' => 'required|email|unique:users,email,'.$id
+        ]);
+
+        $user = User::getSingle($id);
+        $user->name = trim($request->name);
+        $user->email = trim($request->email);
+        if (!empty($request->password)) {
+            $user->password = bcrypt($request->password);
+        }
+        $user->save();
+
+        return redirect()->back()->with('success', 'Admin successfully updated');
     }
 
     public function updateAccountMy(Request $request)

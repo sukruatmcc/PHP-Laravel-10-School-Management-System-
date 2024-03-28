@@ -109,6 +109,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/assign-subject/edit_single/{id}',[ClassSubjectController::class,'edit_single'])->name('admin.assign_subject.edit_single');
     Route::post('/assign-subject/edit_single/{id}',[ClassSubjectController::class,'update_single'])->name('admin.assign_subject.update_single');
 
+    //myaccount
+    Route::get('/my-account', [UserController::class, 'myAccount'])->name('admin.my_account');
+    Route::post('/my-account/update', [UserController::class, 'adminUpdateAccountMy'])->name('admin.my_account.update');
+
     //change_password
     Route::get('/change-password',[UserController::class,'changePassword'])->name('change_password');
     Route::post('/change-password',[UserController::class,'changePasswordUpdate'])->name('change_password.update');
