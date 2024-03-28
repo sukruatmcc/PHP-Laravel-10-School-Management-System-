@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,7 @@ Route::post('reset/{token}',[AuthController::class,'resetSend']);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
+    //admin
     Route::get('/list',[AdminController::class,'index'])->name('admin.index');
     Route::get('/add',[AdminController::class,'create'])->name('admin.create');
     Route::post('/add',[AdminController::class,'store'])->name('admin.store');
@@ -53,6 +55,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::post('/edit/{id}',[AdminController::class,'update'])->name('admin.update');
     Route::get('/delete/{id}',[AdminController::class,'destroy'])->name('admin.destroy');
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
+
+    //admin
+    Route::get('/teacher/list',[TeacherController::class,'index'])->name('admin.teacher.index');
+    Route::get('/teacher/add',[TeacherController::class,'create'])->name('admin.teacher.create');
+    Route::post('/teacher/add',[TeacherController::class,'store'])->name('admin.teacher.store');
+    Route::get('/teacher/edit/{id}',[TeacherController::class,'edit'])->name('admin.teacher.edit');
+    Route::post('/teacher/edit/{id}',[TeacherController::class,'update'])->name('admin.teacher.update');
+    Route::get('/teacher/delete/{id}',[TeacherController::class,'destroy'])->name('admin.teacher.destroy');
 
     //student
     Route::get('/student/list',[StudentController::class,'index'])->name('admin.student.index');

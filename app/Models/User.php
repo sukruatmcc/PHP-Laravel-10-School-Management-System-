@@ -69,6 +69,77 @@ class User extends Authenticatable
             return $return;
     }
 
+    static public function getTeacher()
+    {
+        $return =  self::select('users.*')
+        ->where('users.user_type', '=', 2)
+        ->where('users.is_delete','=',0);
+        if(!empty(request()->get('name')))
+        {
+            $return = $return->where('users.name','like','%'.request()->get('name').'%');
+        }
+
+        if(!empty(request()->get('last_name')))
+        {
+            $return = $return->where('users.last_name','like','%'.request()->get('last_name').'%');
+        }
+
+        if(!empty(request()->get('email')))
+        {
+            $return = $return->where('users.email','like','%'.request()->get('email').'%');
+        }
+
+        if(!empty(request()->get('admission_number')))
+        {
+            $return = $return->where('users.admission_number','like','%'.request()->get('admission_number').'%');
+        }
+
+        if(!empty(request()->get('address')))
+        {
+            $return = $return->where('users.address','like','%'.request()->get('address').'%');
+        }
+
+        if(!empty(request()->get('roll_number')))
+        {
+            $return = $return->where('users.roll_number','like','%'.request()->get('roll_number').'%');
+        }
+
+        if(!empty(request()->get('class')))
+        {
+            $return = $return->where('clas.name','like','%'.request()->get('class').'%');
+        }
+
+        if(!empty(request()->get('gender')))
+        {
+            $return = $return->where('users.gender','like','%'.request()->get('gender').'%');
+        }
+
+        if(!empty(request()->get('status')))
+        {
+            $status = (request()->get('status')) == 100 ? 0 : 1;
+            $return = $return->where('users.status','=',$status);
+        }
+
+        if(!empty(request()->get('admission_date')))
+        {
+            $return = $return->whereDate('users.admission_date','=',request()->get('admission_date'));
+        }
+
+        if(!empty(request()->get('date-of_joining')))
+        {
+            $return = $return->whereDate('users.date-of_joining','=',request()->get('date-of_joining'));
+        }
+
+        if(!empty(request()->get('date')))
+        {
+            $return = $return->whereDate('users.created_at','=',request()->get('date'));
+        }
+
+$return =  $return->orderBy('users.id', 'desc')
+        ->paginate(20);
+return $return;
+    }
+
     static public function getStudent()
     {
         $return =  self::select('users.*','clas.name as class_name','parent.name as parent_name','parent.last_name as parent_last_name')

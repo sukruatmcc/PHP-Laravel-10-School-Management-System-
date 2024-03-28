@@ -124,6 +124,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.teacher.index') }}" class="nav-link {{ Request::routeIs('admin.teacher.index') ? 'active' : '' }}">
+                        <i class="nav-icon far fa-user"></i>
+                        <p>
+                            Teacher
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('admin.student.index') }}" class="nav-link {{ Request::routeIs('admin.student.index') ? 'active' : '' }}">
                         <i class="nav-icon far fa-user"></i>
                         <p>
