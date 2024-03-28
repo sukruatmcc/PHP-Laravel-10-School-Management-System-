@@ -19,8 +19,7 @@ class TeacherController extends Controller
 
     public function create()
     {
-        $data['header_title'] = 'Student List';
-        $data['getClass'] = Clas::getRecord();
+        $data['header_title'] = 'Teacher Add';
 
         return view('admin.teacher.create', $data);
     }
@@ -33,6 +32,8 @@ class TeacherController extends Controller
             $student->email = trim($request->email);
             $student->password = bcrypt($request->password);
             $student->last_name = trim($request->last_name);
+            $student->address = trim($request->address);
+            $student->martial_status = trim($request->martial_status);
             $student->parmanent_address = trim($request->parmanent_address);
             $student->quafilication = trim($request->quafilication);
             $student->work_experince = trim($request->work_experince);
@@ -43,7 +44,7 @@ class TeacherController extends Controller
             }
 
             if (!empty($request->date_of_joining)) {
-                $student->date_of_joining	 = trim($request->date_of_joining);
+                $student->date_of_joining = trim($request->date_of_joining);
             }
 
             if(!empty($request->file('profile_pic'))) {
@@ -67,13 +68,12 @@ class TeacherController extends Controller
 
     public function edit($id)
     {
-        $data['header_title'] = "Add New Admin";
+        $data['header_title'] = "Edit Teacher";
         $data['getRecord'] = User::getSingle($id);
-        $data['getClass'] = Clas::getRecord();
 
         if(!empty($data['getRecord']))
         {
-            return view('admin.student.edit',$data);
+            return view('admin.teacher.edit',$data);
         }
         else
         {
@@ -85,22 +85,24 @@ class TeacherController extends Controller
     {
         $student = User::getSingle($id);
         $student->name = trim($request->name);
+        $student->user_type = 2;
         $student->email = trim($request->email);
-
-        if (!empty($request->password)) {
-            $student->password = bcrypt($request->password);
-        }
-
+        $student->password = bcrypt($request->password);
         $student->last_name = trim($request->last_name);
-        $student->admission_number = trim($request->admission_number);
-        $student->roll_number = trim($request->roll_number);
-        $student->class_id = trim($request->class_id);
+        $student->address = trim($request->address);
+        $student->martial_status = trim($request->martial_status);
+        $student->parmanent_address = trim($request->parmanent_address);
+        $student->quafilication = trim($request->quafilication);
+        $student->work_experince = trim($request->work_experince);
         $student->gender = trim($request->gender);
 
         if (!empty($request->date_of_birth)) {
             $student->date_of_birth	 = trim($request->date_of_birth);
         }
 
+        if (!empty($request->date_of_joining)) {
+            $student->date_of_joining = trim($request->date_of_joining);
+        }
 
         if(!empty($request->file('profile_pic'))) {
             $ext = $request->file('profile_pic')->getClientOriginalExtension();
@@ -112,21 +114,13 @@ class TeacherController extends Controller
             $student->profile_pic = $filename;
         }
 
-        $student->caste = trim($request->caste);
-        $student->religion = trim($request->religion);
+
         $student->mobile_number = trim($request->mobile_number);
-
-        if (!empty($request->admission_date)) {
-            $student->admission_date = trim($request->admission_date);
-        }
-
-        $student->blood_group = trim($request->blood_group);
-        $student->height = trim($request->height);
-        $student->weight = trim($request->weight);
+        $student->note = trim($request->note);
         $student->status = trim($request->status);
         $student->save();
 
-        return redirect()->route('admin.student.index')->with('success', 'Student succesfully updated');
+        return redirect()->route('admin.teacher.index')->with('success', 'Student succesfully updated');
     }
 
     public function destroy($id)

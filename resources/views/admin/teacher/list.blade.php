@@ -42,6 +42,10 @@
                                                 <input type="text" class="form-control" value="{{ request()->get('current_address') }}" name="current_address" placeholder="Roll Number">
                                             </div>
                                             <div class="form-group col-md-3">
+                                                <label for="exampleInputEmail1">Parmanent Address</label>
+                                                <input type="text" class="form-control" value="{{ request()->get('parmanent_address') }}" name="parmanent_address" placeholder="Parmanent Address">
+                                            </div>
+                                            <div class="form-group col-md-3">
                                                 <label for="exampleInputEmail1">Martial Status</label>
                                                 <input type="text" class="form-control" value="{{ request()->get('martial_status') }}" name="martial_status" placeholder="Martial Status">
                                             </div>
@@ -55,16 +59,12 @@
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-3">
-                                                <label for="exampleInputEmail1">Caste</label>
-                                                <input type="text" class="form-control" value="{{ request()->get('caste') }}" name="caste" placeholder="Caste">
-                                            </div>
-                                            <div class="form-group col-md-3">
-                                                <label for="exampleInputEmail1">Religion</label>
-                                                <input type="text" class="form-control" value="{{ request()->get('religion') }}" name="religion" placeholder="Religion">
-                                            </div>
-                                            <div class="form-group col-md-3">
                                                 <label for="exampleInputEmail1">Mobile Number</label>
                                                 <input type="text" class="form-control" value="{{ request()->get('mobile_number') }}" name="mobile_number" placeholder="Mobile Number">
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label for="exampleInputEmail1">Quafilication</label>
+                                                <input type="text" class="form-control" value="{{ request()->get('quafilication') }}" name="quafilication" placeholder="Quafilication">
                                             </div>
                                             <div class="form-group col-md-3">
                                                 <label for="exampleInputEmail1">Status</label>
@@ -84,7 +84,7 @@
                                             </div>
                                             <div class="form-group col-md-3">
                                                 <button class="btn btn-primary" type="submit" style="margin-top: 32px">Search</button>
-                                                <a href="{{ route('admin.student.index') }}"  class="btn btn-success" style="margin-top: 32px">Reset</a>
+                                                <a href="{{ route('admin.teacher.index') }}"  class="btn btn-success" style="margin-top: 32px">Reset</a>
                                             </div>
                                         </div>
                                         </div>
@@ -110,7 +110,7 @@
                                             <th>Martial Status</th>
                                             <th>Current Address</th>
                                             <th>Permanent Address</th>
-                                            <th>Qualification</th>
+                                            <th>Quafilication</th>
                                             <th>Work Experience</th>
                                             <th>Status</th>
                                             <th>Created Date</th>
@@ -142,9 +142,9 @@
                                                         <td>{{ $row->status == 0 ? 'Active' : 'Inactive' }}</td>
                                                         <td>{{ date('d-m-Y H:i A',strtotime($row->created_at)) }}</td>
                                                         <td>
-                                                            <a href="{{ route('admin.student.edit', $row->id) }}"
+                                                            <a href="{{ route('admin.teacher.edit', $row->id) }}"
                                                                 class="btn btn-primary btn-sm">Edit</a>
-                                                            <a href="{{ route('admin.student.destroy', $row->id) }}"
+                                                            <a href="{{ route('admin.teacher.destroy', $row->id) }}"
                                                                 class="btn btn-danger btn-sm">Delete</a>
                                                         </td>
                                                     </tr>

@@ -69,8 +69,8 @@
                                         <div class="form-group col-md-6">
                                             <label>Current Address</label>
                                             <input type="text" class="form-control" value="{{ old('address') }}"
-                                                name="adddress" placeholder="Current Address">
-                                            <div style="color: red">{{ $errors->first('adddress') }}</div>
+                                                name="address" placeholder="Current Address">
+                                            <div style="color: red">{{ $errors->first('address') }}</div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Permanent Address</label>
