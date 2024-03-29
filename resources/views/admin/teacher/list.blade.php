@@ -93,7 +93,7 @@
                         @include('admin.layouts.message')
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Student List</h3>
+                                <h3 class="card-title">Teacher List</h3>
                             </div>
                             <div class="card-body p-0">
                                 <table class="table table-striped">

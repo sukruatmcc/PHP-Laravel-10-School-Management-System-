@@ -247,6 +247,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('parent.my_student') }}" class="nav-link {{ Request::routeIs('parent.my_student') ? 'active' : '' }}">
+                        <i class="nav-icon far fa-user"></i>
+                        <p>
+                            My Student
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('parent.my_account') }}" class="nav-link {{ Request::routeIs('parent.my_account') ? 'active' : '' }}">
                         <i class="nav-icon far fa-user"></i>
                         <p>

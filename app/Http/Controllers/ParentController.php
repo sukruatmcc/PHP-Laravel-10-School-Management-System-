@@ -126,6 +126,15 @@ class ParentController extends Controller
        return view('admin.parent.my-student',$data);
     }
 
+    public function parentMyStudent()
+    {
+        $id = auth()->user()->id;
+        $data['header_title'] = 'Parent Student List';
+        $data['getRecord'] = User::getMyStudent($id);
+
+       return view('parent.my-student',$data);
+    }
+
     public function assignStudentParent($student_id,$parentID)
     {
         $student = User::getSingle($student_id);

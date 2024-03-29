@@ -150,5 +150,6 @@ Route::group(['prefix' => 'parent', 'middleware' => 'parent'], function () {
     //change_password
     Route::get('/change-password',[UserController::class,'changePassword'])->name('parent.change_password');
     Route::post('/change-password',[UserController::class,'changePasswordUpdate'])->name('parent.change_password.update');
+    Route::get('/my-student',[ParentController::class,'parentMyStudent'])->name('parent.my_student');
 
 });
