@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ClassSubject;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 
@@ -65,5 +66,13 @@ class SubjectController extends Controller
         $class->save();
 
         return redirect()->back()->with('success','Subject successfully deleted');
+    }
+
+    public function subjectMy()
+    {
+        $data['getRecord'] = ClassSubject::mySubject(auth()->user()->class_id);
+
+        $data['header_title'] = 'My Subject';
+        return view('student.my-subject', $data);
     }
 }

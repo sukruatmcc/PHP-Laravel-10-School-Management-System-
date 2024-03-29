@@ -135,6 +135,7 @@ Route::group(['prefix' => 'student', 'middleware' => 'student'], function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard']);
     Route::get('/my-account', [UserController::class, 'myAccount'])->name('student.my_account');
     Route::post('/my-account/update', [UserController::class, 'studentUpdateMyAccount'])->name('student.my_account.update');
+    Route::get('/my-subject', [SubjectController::class, 'subjectMy'])->name('student.my_subject');
 
     //change_password
     Route::get('/change-password',[UserController::class,'changePassword'])->name('student.change_password');

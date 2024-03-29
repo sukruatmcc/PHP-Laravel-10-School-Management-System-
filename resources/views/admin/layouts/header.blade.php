@@ -222,6 +222,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('student.my_subject') }}" class="nav-link {{ Request::routeIs('student.my_subject') ? 'active' : '' }}">
+                        <i class="nav-icon far fa-user"></i>
+                        <p>
+                            My Subject
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('student.my_account') }}" class="nav-link {{ Request::routeIs('student.my_account') ? 'active' : '' }}">
                         <i class="nav-icon far fa-user"></i>
                         <p>
